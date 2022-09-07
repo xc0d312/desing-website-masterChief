@@ -3,10 +3,13 @@
   padding:0;
   font-family:'Poppins';
   font-size:14px;
+  box-sizing: border-box;
 }
-body{
-  background:#1B2430;
-  line-height:1.5em;
+.wrapper{
+  width: 100%;
+  height: 100%;
+  /* background:#1B2430; */
+  background: black;
 }
 nav{
   display:flex;
@@ -23,7 +26,7 @@ nav ul li > a{
   display:block;
   text-decoration:none;
   position:relative;
-  padding:20px 10px 10px 10px; 
+  padding:20px 10px 10px 10px;
   color:white;
 }
 nav ul li .link::after{
@@ -56,7 +59,7 @@ nav .more{
 }
 .menu >a {
   display:block;
- 
+
   line-height:30px;
   text-decoration:none;
   padding:0 10px;
@@ -146,7 +149,8 @@ header{
   top:150px;
   right:100px;
   color:white;
-  background-color:rgba(0,0,0,0.5)
+  background-color:rgba(0,0,0,0.5);
+  box-sizing: content-box;
 }
 h2{
   display:inline-block;
@@ -162,13 +166,12 @@ h2{
 h2::after{
   content:"";
   position: absolute;
-   width:100%;
+  width:100%;
   height:20px;
   bottom:-20px;
- left:0%;
- 
- transform:scale(1) skewY(-20deg) rotate(20deg);
-  margin:0 auto;
+  left:0%;
+  /* para darle la vuelta al elemento  */
+  transform:scale(1) skewY(-20deg) rotate(20deg);
   background-color:greenyellow;
 }
 #banner > *{
@@ -180,7 +183,7 @@ h2::after{
   display:inline-flex;
   align-items:center;
    font-size:15px;
-   padding:10px 40px;
+   padding:5px 40px;
    background-color:greenyellow;
    color:black;
    font-weight:bolder;
@@ -189,17 +192,18 @@ h2::after{
 }
 .green-button:hover{
 background-color:greenyellow;
+cursor:pointer;
 }
 .green-link{
   border:0;
   position: relative;
   display:inline-flex;
   align-items:center;
-   font-size:16px;
-   padding:10px 40px;
-   color:greenyellow;
-   font-weight:bolder;
-   text-decoration:none;
+  font-size:16px;
+  padding:10px 40px;
+  color:greenyellow;
+  font-weight:bolder;
+  text-decoration:none;
 }
 .green-link::after{
   position:absolute;
@@ -225,10 +229,26 @@ background-color:greenyellow;
 }
 
 #videos{
+  height: 100%;
+  position: relative;
+  padding-bottom: 20px;
+  z-index: 100;
+}
+#videos::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
   background-image:url(../img/bg-videos.png);
   background-size:cover;
   background-position:center center;
-  height:auto;
+  z-index: -10;
+  /* background-color: rgba(0, 255, 255,0.5); */
 }
 
 .w-75{
@@ -237,6 +257,7 @@ background-color:greenyellow;
   margin:0 auto;
   color:white;
   text-transform:uppercase;
+
 }
 h3{
   color:white;
@@ -251,10 +272,10 @@ h3{
 .slider .controls > button{
   border:none;
 color:white;
-background-color:#1B2430;
+background-color:#000000;
 cursor:pointer;
 transition:all 0.3s ease;
-} 
+}
 .slider .controls button span{
   padding:7px 15px;
 }
@@ -264,16 +285,112 @@ transition:all 0.3s ease;
 /* current videos  */
 
 .slider #current {
-  width:80%;
+  width:70%;
   margin:30px auto;
   border:1px solid #1B2430;
-} 
-/*custon html*/
+  
+}
 
-.child{
-  width: 500px;
-  height: 200px;
-  background-color: aqua;
+.videos-container{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.videos-container  .item{
+  border: 1px solid rgba(0,0,0,0.5);
+  cursor: pointer;
+  min-width: 320px;
+  height: 180px;
+  position: relative;
+}
+.videos-container .item::after{
+  font-family: "Material Icons";
+  content: "play_arrow";
+  font-size: 30px;
+  position: absolute;
+  display: block;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  background-color: #000000;
+  color: white;
+  display: block;
+  z-index: 100;
+  top: 40%;
+  left: 40%;
+  transform: translate(top,left);  
+  border-radius: 50%;
+}
+/* Multiplayer */
+#muli-player{
+  width: 100%;
+  height: 100vh;
+  background-image: url('../img/bg-multiplayer.jpeg');
+  background-position:center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  transition: all ease 0.5s;
+
+}
+.info{
+  text-align: center;
+  width: 300px;
+  padding:10px 40px;
+  box-sizing: content-box;
+  background-color: rgba(2, 2, 2,0.5);
+  color: white;
+  position: absolute;
+  right: 0px;
+  top: 150px;
+  right: 100px;
+}
+/* get-the-game */
+#get-the-game{
+  text-align: center;
+}
+#get-the-game .item-store .left img{
+width: 300px;
+}
+#get-the-game .item-store .rigth{
+  width: 100%;
+  padding: 20px; 
+}
+#get-the-game .item-store .left{
+  width: 100%;
+}
+
+.info-product{
+  text-align: left !important;
+  color: white;
+}
+.info-product > *{
+  padding: 8px 5px;
+}
+.info-product h3{
+  font-size: 20px;
+}
+#get-the-game .item-store{
+  display: flex;
+  padding: 20px;
+}
+select{
+border: 1px solid white;
+position: relative;
+left:5px;
+color: white;
+background-color: black;
+cursor:pointer;
+}
+/* footer */
+
+footer{
+  height: 600px;
+  position: relative;
+  background-image: url(/img/master-chief-darkmode.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 /* MediaQuery */
 
@@ -285,14 +402,45 @@ transition:all 0.3s ease;
    nav .more{
     display:block;
   }
+  footer{
+    height: 500px;
+    
+  }
+}
+@media screen and (max-width:800px){
+  footer{
+    height: 400px;
+  }
 }
 @media screen and (max-width:700px){
   #banner{
     position: static !important;
     width:100%;
     padding:30px 0px 20px 0px;
-    background-color:#1B2430;
+    background-color:black;
   }
+  .videos-container{
+    display: none;
+  }
+  #muli-player{
+   
+    background-position:right left;
+  
+  }
+  
+  #get-the-game .item-store{
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .info-product{
+    text-align: center !important;
+    color: white;
+  }
+  footer{
+    height: 300px;
+
+  }
+
 }
 @media screen and (max-width:554px){
   nav{
@@ -307,7 +455,26 @@ transition:all 0.3s ease;
   }
   header{
     height:50vh;
-   
-  }
 
+  }
+  #muli-player{
+    padding-top: 100px;
+    background-position:-400px 0px;
+   
+  
+  }
+  .info{
+    position: static;
+    margin: 0 auto;
+    
+  }
+  #get-the-game .item-store .left img{
+    width: 200px;
+    }
+    .info-product > *{
+      font-size: 11px !important;
+    }
+    footer{
+      height: 200px;
+    }
 }
